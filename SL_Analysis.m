@@ -24,3 +24,12 @@ for i = 1:length(blocks)
   parent = get_param(blocks{i},'Parent');
   disp([blockName,' : ', blockType, ' (Parent : ',parent,')']);
 end
+
+lines = find_system('model','FindAll','on','Type','Line');
+for i = 1:length(lines)
+  src = get_param(lines(i),'SrcBlockHandle');
+  dst = get_param(lines(i),'DstBlockHandle');  
+  srcName = get_param(src,'Name');
+  dstName = get_param(dst,'Name'); 
+  disp([srcName, ' -> ', dstName]);
+end
